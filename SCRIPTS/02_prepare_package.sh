@@ -270,9 +270,10 @@ ln -sf ../../../feeds/luci/applications/luci-app-aliddns ./package/feeds/luci/lu
 rm -rf ./feeds/luci/applications/luci-app-dockerman
 svn export https://github.com/lisaac/luci-app-dockerman/trunk/applications/luci-app-dockerman feeds/luci/applications/luci-app-dockerman
 sed -i '/auto_start/d' feeds/luci/applications/luci-app-dockerman/root/etc/uci-defaults/luci-app-dockerman
-pushd feeds/packages
-wget -qO- https://github.com/openwrt/packages/commit/33ed553.patch | patch -p1
-popd
+# firewall manipulation on service start may mess up with manual settings, skip patch
+# pushd feeds/packages
+# wget -qO- https://github.com/openwrt/packages/commit/33ed553.patch | patch -p1
+# popd
 rm -rf ./feeds/luci/collections/luci-lib-docker
 svn export https://github.com/lisaac/luci-lib-docker/trunk/collections/luci-lib-docker feeds/luci/collections/luci-lib-docker
 #sed -i 's/+docker/+docker \\\n\t+dockerd/g' ./feeds/luci/applications/luci-app-dockerman/Makefile
@@ -506,6 +507,9 @@ sed -i 's,9625784cf2e4fd9842f1d407681ce4878b5b0dcddbcd31c6135114a30c71e6a8,skip,
 # 翻译及部分功能优化
 svn export https://github.com/QiuSimons/OpenWrt-Add/trunk/addition-trans-zh package/lean/lean-translate
 sed -i 's,iptables-mod-fullconenat,iptables-nft +kmod-nft-fullcone,g' package/lean/lean-translate/Makefile
+
+# change default local ip
+sed -i 's/192.168.1.1/10.10.10.1/' package/base-files/files/bin/config_generate
 
 ### 最后的收尾工作 ###
 # Lets Fuck

@@ -241,3 +241,13 @@ CONFIG_PACKAGE_kmod-cryptodev=y
 CONFIG_PACKAGE_kmod-mt76x2=y
 CONFIG_PACKAGE_kmod-fs-nfs-common=y
 CONFIG_PACKAGE_kmod-sctp=y
+
+### other useful tools ###
+CONFIG_PACKAGE_tmux=y
+CONFIG_PACKAGE_curl=y
+CONFIG_PACKAGE_iperf3=y
+CONFIG_PACKAGE_git=y
+CONFIG_PACKAGE_git-http=y
+CONFIG_PACKAGE_docker-compose=y
+CONFIG_PACKAGE_tailscaled=y
+CONFIG_PACKAGE_tailscale=y

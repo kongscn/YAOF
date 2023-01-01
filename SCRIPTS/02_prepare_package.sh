@@ -520,6 +520,9 @@ sed -i 's,9625784cf2e4fd9842f1d407681ce4878b5b0dcddbcd31c6135114a30c71e6a8,skip,
 svn export https://github.com/QiuSimons/OpenWrt-Add/trunk/addition-trans-zh package/lean/lean-translate
 sed -i 's,iptables-mod-fullconenat,iptables-nft +kmod-nft-fullcone,g' package/lean/lean-translate/Makefile
 
+# change default local ip
+sed -i 's/192.168.1.1/10.10.10.1/' package/base-files/files/bin/config_generate
+
 ### 最后的收尾工作 ###
 # Lets Fuck
 mkdir -p package/base-files/files/usr/bin

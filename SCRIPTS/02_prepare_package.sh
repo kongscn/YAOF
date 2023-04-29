@@ -446,6 +446,10 @@ echo > ./feeds/packages/utils/watchcat/files/watchcat.config
 cp -rf ../OpenWrt-Add/addition-trans-zh ./package/new/addition-trans-zh
 sed -i 's,iptables-mod-fullconenat,iptables-nft +kmod-nft-fullcone,g' package/new/addition-trans-zh/Makefile
 
+# change default local ip
+sed -i 's/192.168.1.1/10.10.10.1/' package/base-files/files/bin/config_generate
+
+
 ### 最后的收尾工作 ###
 # Lets Fuck
 mkdir -p package/base-files/files/usr/bin
